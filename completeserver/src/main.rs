@@ -12,6 +12,7 @@ mod entities;
 use routes::departments::departments_routes;
 use routes::staff::staff_routes;
 use routes::students::students_routes;
+use routes::login::login_routes;
 #[tokio::main]
 async fn main ()->Result<()>{
     dotenv().ok();
@@ -22,6 +23,7 @@ async fn main ()->Result<()>{
     .nest("/departments",departments_routes(db.clone()))
     .nest("/staff",staff_routes(db.clone()))
     .nest("/students",students_routes(db.clone()))
+    .nest("/login",login_routes(db.clone()))
     .layer(cors);
     let addr = SocketAddr::from(([127,0,0,1],8000));
     let conn = TcpListener::bind(addr).await?;
