@@ -58,7 +58,7 @@ async fn main() -> Result<()> {
 
 async fn shutdown_signal() {
     use tokio::signal;
-
+// i donts fucking understand whats happening here
     // Wait for Ctrl+C
     let ctrl_c = async {
         signal::ctrl_c()
